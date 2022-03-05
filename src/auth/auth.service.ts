@@ -3,8 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import * as argon from 'argon2';
-import { AuthDto } from 'src/auth/dto';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { AuthDto } from '../auth/dto';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class AuthService {
@@ -59,7 +59,7 @@ export class AuthService {
     email: string,
   ): Promise<{ access_token: string }> {
     const payload = {
-      sub: userId,
+      id: userId,
       email,
     };
 
